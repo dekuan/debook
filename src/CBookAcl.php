@@ -1,9 +1,9 @@
 <?php
 
-namespace dekuan\debookacl;
+namespace dekuan\debook;
 
 
-class CAcl
+class CBookAcl
 {
 	//
 	//	PERMISSION, max value is 4294967296 ( 1 << 32 )
