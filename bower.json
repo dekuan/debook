@@ -1,0 +1,37 @@
+{
+	"name"		: "debook",
+	"homepage"	: "http://book.dekuan.org/",
+	"authors"	:
+	[
+		"liuqixing <liuqixing@dekuan.org>"
+	],
+	"description"	: "book.dekuan.org",
+	"main"		:
+	[
+		"vdata.js"
+	],
+	"keywords"	:
+	[
+		"dekuan",
+		"debook",
+	],
+	"license": "MIT",
+	"ignore":
+	[
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"test",
+		"tests",
+		"src",
+		"tools",
+		"composer.json",
+		"karma.conf.js",
+		"mocha.opts",
+		"package.json"
+	],
+	"dependencies":
+	{
+		"jquery": ">=1.11"
+	}
+}
