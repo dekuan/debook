@@ -10,7 +10,7 @@ function CMsgConfirm( _oParent )
 	var m_sBtnCancelSelector	= m_sBoxSelector + " .js-btn-cancel";
 	var m_sBtnContinueSelector	= m_sBoxSelector + " .js-btn-continue";
 
-	//	propertys
+	//	properties
 	this.oParent		= _oParent;
 
 

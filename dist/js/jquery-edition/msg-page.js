@@ -13,7 +13,7 @@ function CMsgPage( _oParent, _nDuration )
 	var m_nDuration			= ( 'number' == typeof _nDuration ? _nDuration : 200 );
 
 
-	//	propertys
+	//	properties
 	this.oParent		= _oParent;
 
 

@@ -8,7 +8,7 @@ function CTopToast( _oParent )
 	var m_sTextSelector	= m_sBoardSelector + " .text";
 	var m_nAnimateDelay	= 200;
 
-	//	propertys
+	//	properties
 	this.oParent		= _oParent;
 
 
