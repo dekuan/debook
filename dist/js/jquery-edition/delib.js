@@ -141,9 +141,6 @@ function delib_strcasecmp( sString1, sString2 )
 	//		  0 ( sString1 == sString2 ),
 	//		 -1 ( sString1 < sString2 )
 	//
-	var sString1;
-	var sString2;
-
 	sString1 = ( new String( sString1 ) ).toLowerCase();
 	sString2 = ( new String( sString2 ) ).toLowerCase();
 	if ( sString1 > sString2 )
