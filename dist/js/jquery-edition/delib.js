@@ -1,7 +1,7 @@
 /** 
  *	llib
  */
-function xslib_extend( oCopyTo, oCopyFrom, bMakeLowerCaseKey )
+function delib_extend( oCopyTo, oCopyFrom, bMakeLowerCaseKey )
 {
 	var sPropName;
 	var sPropNameLC;
@@ -19,62 +19,62 @@ function xslib_extend( oCopyTo, oCopyFrom, bMakeLowerCaseKey )
 		}
 	}
 }
-function $le(){ return xslib_extend.apply( this, arguments ); }
+function $le(){ return delib_extend.apply( this, arguments ); }
 
-function xslib_is_null( oObj )
+function delib_is_null( oObj )
 {
 	var sType;
 
 	sType = $.type( oObj ).toLowerCase();
 	return ( "undefined" == sType || "null" == sType );
 }
-function $lisnul(){ return xslib_is_null.apply( this, arguments ); }
+function $lisnul(){ return delib_is_null.apply( this, arguments ); }
 
-function xslib_is_string( oObj )
+function delib_is_string( oObj )
 {
 	return ( "string" == $.type( oObj ).toLowerCase() );
 }
-function $liss(){ return xslib_is_string.apply( this, arguments ); }
+function $liss(){ return delib_is_string.apply( this, arguments ); }
 
-function xslib_is_numeric( oObj )
+function delib_is_numeric( oObj )
 {
 	return ( $.isNumeric( oObj ) );
 }
-function $lisn(){ return xslib_is_numeric.apply( this, arguments ); }
+function $lisn(){ return delib_is_numeric.apply( this, arguments ); }
 
-function xslib_is_bool( oObj )
+function delib_is_bool( oObj )
 {
 	return ( "boolean" == $.type( oObj ).toLowerCase() );
 }
-function $lisb(){ return xslib_is_bool.apply( this, arguments ); }
+function $lisb(){ return delib_is_bool.apply( this, arguments ); }
 
-function xslib_is_object( oObj )
+function delib_is_object( oObj )
 {
 	return ( oObj && ! $lisnul( oObj ) && "object" == $.type( oObj ).toLowerCase() );
 }
-function $liso(){ return xslib_is_object.apply( this, arguments ); }
+function $liso(){ return delib_is_object.apply( this, arguments ); }
 
-function xslib_is_array( oObj )
+function delib_is_array( oObj )
 {
 	return ( oObj && ! $lisnul( oObj ) && $.isArray( oObj ) );
 }
-function $lisa(){ return xslib_is_array.apply( this, arguments ); }
+function $lisa(){ return delib_is_array.apply( this, arguments ); }
 
-function xslib_is_function( oObj )
+function delib_is_function( oObj )
 {
 	return ( oObj && ! $lisnul( oObj ) && $.isFunction( oObj ) );
 }
-function $lisfun(){ return xslib_is_function.apply( this, arguments ); }
+function $lisfun(){ return delib_is_function.apply( this, arguments ); }
 
-function xslib_is_timestamp( nTimestamp )
+function delib_is_timestamp( nTimestamp )
 {
 	//	1325376000 is the timestamp of "2012-01-01 00:00:00"
 	//	2145916800 is the timestamp of "2038-01-01 00:00:00"
 	return ( $lisn( nTimestamp ) && nTimestamp > 1325376000 && nTimestamp < 2145916800 );
 }
-function $listm(){ return xslib_is_timestamp.apply( this, arguments ); }
+function $listm(){ return delib_is_timestamp.apply( this, arguments ); }
 
-function xslib_has_own( oObj, sKey )
+function delib_has_own( oObj, sKey )
 {
 	if ( ! $liso( oObj ) || 0 == $lslen( sKey, true ) ) 
 	{
@@ -82,9 +82,9 @@ function xslib_has_own( oObj, sKey )
 	}
 	return Object.prototype.hasOwnProperty.call( oObj, sKey );
 }
-function $lhasown(){ return xslib_has_own.apply( this, arguments ); }
+function $lhasown(){ return delib_has_own.apply( this, arguments ); }
 
-function xslib_strlen( sString, bTrim )
+function delib_strlen( sString, bTrim )
 {
 	var nRet;
 	var sNewString;
@@ -107,12 +107,12 @@ function xslib_strlen( sString, bTrim )
 
 	return nRet;
 }
-function $lslen(){ return xslib_strlen.apply( this, arguments ); }
+function $lslen(){ return delib_strlen.apply( this, arguments ); }
 
 /**
  *	the length of jquery object
  */
-function xslib_jlen( oObj )
+function delib_jlen( oObj )
 {
 	var nRet;
 
@@ -131,10 +131,10 @@ function xslib_jlen( oObj )
 
 	return nRet;
 }
-function $ljl(){ return xslib_jlen.apply( this, arguments ); }
+function $ljl(){ return delib_jlen.apply( this, arguments ); }
 
 //	Binary safe case-insensitive string comparison
-function xslib_strcasecmp( sString1, sString2 )
+function delib_strcasecmp( sString1, sString2 )
 {
 	//
 	//	RETURN	- 1 ( sString1 > sString2 ),
@@ -157,9 +157,9 @@ function xslib_strcasecmp( sString1, sString2 )
 
 	return -1;
 }
-function $lscmp(){ return xslib_strcasecmp.apply( this, arguments ); }
+function $lscmp(){ return delib_strcasecmp.apply( this, arguments ); }
 
-function xslib_strncasecmp( sString1, sString2, nLength )
+function delib_strncasecmp( sString1, sString2, nLength )
 {
 	//
 	//	RETURN	-  < 0 if sString1 is less than sString2;
@@ -210,9 +210,9 @@ function xslib_strncasecmp( sString1, sString2, nLength )
 
 	return 0;
 }
-function $lsncmp(){ return xslib_strncasecmp.apply( this, arguments ); }
+function $lsncmp(){ return delib_strncasecmp.apply( this, arguments ); }
 
-function xslib_array_to_object( ArrList, sItemKey )
+function delib_array_to_object( ArrList, sItemKey )
 {
 	//
 	//	ArrList		- [ {'key1':v1,'key2':v2,...}, ... ]
@@ -254,9 +254,9 @@ function xslib_array_to_object( ArrList, sItemKey )
 	//	...
 	return oRet;
 }
-function $lato(){ return xslib_array_to_object.apply( this, arguments ); }
+function $lato(){ return delib_array_to_object.apply( this, arguments ); }
 
-function xslib_is_html_encoded( sString )
+function delib_is_html_encoded( sString )
 {
 	if ( 0 == $lslen( sString, true ) )
 	{
@@ -264,9 +264,9 @@ function xslib_is_html_encoded( sString )
 	}
 	return ( -1 == sString.indexOf("\"") && -1 == sString.indexOf("'") && -1 == sString.indexOf("<") && -1 == sString.indexOf(">") );
 }
-function $lishtmecd(){ return xslib_is_html_encoded.apply( this, arguments ); }
+function $lishtmecd(){ return delib_is_html_encoded.apply( this, arguments ); }
 
-function xslib_html_encode( sString )
+function delib_html_encode( sString )
 {
 	if ( 0 == $lslen( sString, true ) )
 	{
@@ -274,9 +274,9 @@ function xslib_html_encode( sString )
 	}
 	return $('<span>').text( sString ).html();
 }
-function $lhtmec(){ return xslib_html_encode.apply( this, arguments ); }
+function $lhtmec(){ return delib_html_encode.apply( this, arguments ); }
 
-function xslib_html_decode( sString )
+function delib_html_decode( sString )
 {
 	if ( 0 == $lslen( sString, true ) )
 	{
@@ -284,9 +284,9 @@ function xslib_html_decode( sString )
 	}
 	return $('<span>').html( sString ).text();
 }
-function $lhtmdc(){ return xslib_html_decode.apply( this, arguments ); }
+function $lhtmdc(){ return delib_html_decode.apply( this, arguments ); }
 
-function xslib_get_formated_html( sString )
+function delib_get_formated_html( sString )
 {
 	var sRet;
 
@@ -300,9 +300,9 @@ function xslib_get_formated_html( sString )
 			.replace( /\r?\n|\r/g, "<br />" );
 	return sRet;
 }
-function $lgfhtm(){ return xslib_get_formated_html.apply( this, arguments ); }
+function $lgfhtm(){ return delib_get_formated_html.apply( this, arguments ); }
 
-function xslib_parse_text_links( sHtml, oParam_ )
+function delib_parse_text_links( sHtml, oParam_ )
 {
 	//
 	//	sHtml	- [in] html code
@@ -370,9 +370,9 @@ function xslib_parse_text_links( sHtml, oParam_ )
 
 	return sRet;
 }
-function $lptlk(){ return xslib_parse_text_links.apply( this, arguments ); }
+function $lptlk(){ return delib_parse_text_links.apply( this, arguments ); }
 
-function xslib_parse_url( sUrl )
+function delib_parse_url( sUrl )
 {
 	var oA;
 
@@ -383,9 +383,9 @@ function xslib_parse_url( sUrl )
 	}
 	return oA;
 }
-function $lpurl(){ return xslib_parse_url.apply( this, arguments ); }
+function $lpurl(){ return delib_parse_url.apply( this, arguments ); }
 
-function xslib_get_highlight_text( sOrgText, sKey )
+function delib_get_highlight_text( sOrgText, sKey )
 {
 	var sRet;
 	var sDecodedText;
@@ -423,9 +423,9 @@ function xslib_get_highlight_text( sOrgText, sKey )
 	//	...
 	return sRet;
 }
-function $lghtxt(){ return xslib_get_highlight_text.apply( this, arguments ); }
+function $lghtxt(){ return delib_get_highlight_text.apply( this, arguments ); }
 
-function xslib_rd( sUrl, nTimeout )
+function delib_rd( sUrl, nTimeout )
 {
 	//
 	//	sUrl		- [in] URL
@@ -447,9 +447,9 @@ function xslib_rd( sUrl, nTimeout )
 		window.location.href = ( sUrl ? sUrl : window.location.href );
 	}
 }
-function $lrd(){ return xslib_rd.apply( this, arguments ); }
+function $lrd(){ return delib_rd.apply( this, arguments ); }
 
-function xslib_reload( bReloadSource )
+function delib_reload( bReloadSource )
 {
 	var bReloadFromServer;
 
@@ -465,11 +465,11 @@ function xslib_reload( bReloadSource )
 	window.setTimeout(function()
 	{
 		window.location.reload( bReloadFromServer );
-	},10 );
+	}, 10 );
 }
-function $lrld(){ return xslib_reload.apply( this, arguments ); }
+function $lrld(){ return delib_reload.apply( this, arguments ); }
 
-function xslib_obs_exec( pfnCallbackCondition, nMilliSeconds, pfnCallbackComplete )
+function delib_obs_exec( pfnCallbackCondition, nMilliSeconds, pfnCallbackComplete )
 {
 	//	obsessively execute
 	var nInterval;
@@ -495,9 +495,9 @@ function xslib_obs_exec( pfnCallbackCondition, nMilliSeconds, pfnCallbackComplet
 		nMilliSeconds
 	);
 }
-function $loe(){ return xslib_obs_exec.apply( this, arguments ); }
+function $loe(){ return delib_obs_exec.apply( this, arguments ); }
 
-function xslib_print_r( theObj, vSpecTab )
+function delib_print_r( theObj, vSpecTab )
 {
 	var sRet	= "";
 	var vTab	= vSpecTab ? vSpecTab : "\t";
@@ -510,7 +510,7 @@ function xslib_print_r( theObj, vSpecTab )
 			if ( theObj[p].constructor == Array || theObj[p].constructor == Object )
 			{
 				sRet += ( vTab + "[" + p + "] => " + typeof( theObj ) + " " );
-				sRet += xslib_print_r( theObj[ p ], ( vTab + "\t" ) );
+				sRet += delib_print_r( theObj[ p ], ( vTab + "\t" ) );
 			}
 			else
 			{
@@ -521,9 +521,9 @@ function xslib_print_r( theObj, vSpecTab )
 	}
 	return sRet;
 }
-function $lpr(){ return xslib_print_r.apply( this, arguments ); }
+function $lpr(){ return delib_print_r.apply( this, arguments ); }
 
-function xslib_get_top_zindex( sSelector, nMaxLimit )
+function delib_get_top_zindex( sSelector, nMaxLimit )
 {
 	var nRet;
 	var nZIndex;
@@ -565,10 +565,10 @@ function xslib_get_top_zindex( sSelector, nMaxLimit )
 
 	return nRet;
 }
-function $lgtzi(){ return xslib_get_top_zindex.apply( this, arguments ); }
+function $lgtzi(){ return delib_get_top_zindex.apply( this, arguments ); }
 
 
-function xslib_get_event_info( oEvent, bDebug )
+function delib_get_event_info( oEvent, bDebug )
 {
 	var oTarg;
 	var sTagName;
@@ -616,26 +616,6 @@ function xslib_get_event_info( oEvent, bDebug )
 
 	return { "tagName" : sTagName, "className" : sClassName, "id" : sId, "obj" : oTarg };
 }
-function $lgevinf(){ return xslib_get_event_info.apply( this, arguments ); }
+function $lgevinf(){ return delib_get_event_info.apply( this, arguments ); }
 
-function xslib_is_valid_json_reponse( ojJsonData )
-{
-    var bRet;
-
-    if ( ! ojJsonData || null == typeof ojJsonData )
-    {
-        return false;
-    }
-
-    //  ...
-    bRet = false;
-
-    if ( ojJsonData.hasOwnProperty('errorid') &&
-		ojJsonData.hasOwnProperty('vdata') )
-    {
-        bRet = ( 0 == ojJsonData['errorid'] );
-    }
-
-    return bRet;
-}
 

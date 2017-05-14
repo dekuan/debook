@@ -7,7 +7,7 @@ function CLoadToast( _oParent )
 	var m_sBoardSelector	= "#load-toast";
 	var m_sTextSelector	= m_sBoardSelector + " .js-text-title";
 
-	//	propertys
+	//	properties
 	this.oParent		= _oParent;
 
 
