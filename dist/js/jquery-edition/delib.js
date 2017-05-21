@@ -565,6 +565,39 @@ function delib_get_top_zindex( sSelector, nMaxLimit )
 function $lgtzi(){ return delib_get_top_zindex.apply( this, arguments ); }
 
 
+
+function delib_mutation_observer( pfnCallbackCondition, pfnCallbackReady )
+{
+	if ( ! $lisfun( pfnCallbackCondition ) || ! $lisfun( pfnCallbackReady ) )
+	{
+		return false;
+	}
+
+	var nInterval;
+
+	//	...
+	nInterval = window.setInterval( function()
+	{
+		if ( pfnCallbackCondition() )
+		{
+			//	...
+			window.clearInterval( nInterval );
+			nInterval = null;
+
+			console.log( "delib_mutation_observer, clearInterval nInterval" );
+
+			//	...
+			pfnCallbackReady();
+		}
+
+	}, 100 );
+
+	//	...
+	return true;
+}
+function $lmtobs(){ return delib_mutation_observer.apply( this, arguments ); }
+
+
 function delib_get_event_info( oEvent, bDebug )
 {
 	var oTarg;
