@@ -74,6 +74,13 @@ function delib_is_timestamp( nTimestamp )
 }
 function $listm(){ return delib_is_timestamp.apply( this, arguments ); }
 
+function delib_is_valid_date_object( oObj )
+{
+	//	d.valueOf() could also work
+	return ( "[object Date]" === Object.prototype.toString.call( oObj ) && ( ! isNaN( oObj.getTime() ) ) );
+}
+function $lisvdo(){ return delib_is_valid_date_object.apply( this, arguments ); }
+
 function delib_has_own( oObj, sKey )
 {
 	if ( ! $liso( oObj ) || 0 == $lslen( sKey, true ) ) 
