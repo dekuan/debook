@@ -81,6 +81,38 @@ function delib_is_valid_date_object( oObj )
 }
 function $lisvdo(){ return delib_is_valid_date_object.apply( this, arguments ); }
 
+function delib_is_object_with_key( oObj, vKey )
+{
+	var bRet;
+	var vKeyKey;
+
+	bRet = false;
+
+	if ( "[object Object]" === Object.prototype.toString.call( oObj ) )
+	{
+		if ( "[object Array]" === Object.prototype.toString.call( vKey ) )
+		{
+			bRet	= true;
+			for ( vKeyKey in vKey )
+			{
+				if ( ! oObj.hasOwnProperty( vKey[ vKeyKey ] ) )
+				{
+					bRet = false;
+					break;
+				}
+			}
+		}
+		else if ( "[object String]" === Object.prototype.toString.call( vKey ) ||
+			"[object Number]" === Object.prototype.toString.call( vKey ) )
+		{
+			bRet = oObj.hasOwnProperty( vKey );
+		}
+	}
+
+	return bRet;
+}
+function $lisowk(){ return delib_is_object_with_key.apply( this, arguments ); }
+
 function delib_has_own( oObj, sKey )
 {
 	if ( ! $liso( oObj ) || 0 == $lslen( sKey, true ) ) 
