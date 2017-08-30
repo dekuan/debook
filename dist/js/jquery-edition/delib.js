@@ -88,7 +88,7 @@ function delib_is_object_with_key( oObj, vKey )
 
 	bRet = false;
 
-	if ( "[object Object]" === Object.prototype.toString.call( oObj ) )
+	if ( "object" === typeof oObj )
 	{
 		if ( "[object Array]" === Object.prototype.toString.call( vKey ) )
 		{
