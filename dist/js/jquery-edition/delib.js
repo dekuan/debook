@@ -50,7 +50,7 @@ function $lisb(){ return delib_is_bool.apply( this, arguments ); }
 
 function delib_is_object( oObj )
 {
-	return ( oObj && ! $lisnul( oObj ) && "object" == $.type( oObj ).toLowerCase() );
+	return ( "[object Object]" === Object.prototype.toString.call( oObj ) );
 }
 function $liso(){ return delib_is_object.apply( this, arguments ); }
 
@@ -88,7 +88,7 @@ function delib_is_object_with_key( oObj, vKey )
 
 	bRet = false;
 
-	if ( "object" === typeof oObj )
+	if ( "[object Object]" === Object.prototype.toString.call( oObj ) )
 	{
 		if ( "[object Array]" === Object.prototype.toString.call( vKey ) )
 		{
