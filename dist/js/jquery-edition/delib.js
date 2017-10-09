@@ -566,6 +566,7 @@ function delib_get_top_zindex( sSelector, nMaxLimit )
 	var nZIndex;
 	var ArrZIndex = [];
 	var nMaxZIndex;
+	var nAutoIncrement;
 
 	if ( '' == $.trim( sSelector ) )
 	{
@@ -574,8 +575,21 @@ function delib_get_top_zindex( sSelector, nMaxLimit )
 
 	//	...
 	nRet = 0;
-	nMaxZIndex = $lisnul( nMaxLimit ) ? -1 : nMaxLimit;
+	nMaxZIndex	= $lisnul( nMaxLimit ) ? -1 : nMaxLimit;
 
+	//	...
+	nAutoIncrement	= parseInt( $( "body" ).data( "delib_get_top_zindex_auto_increment" ) );
+	if ( $lisn( nAutoIncrement ) && nAutoIncrement >= 0 )
+	{
+		nAutoIncrement ++;
+	}
+	else
+	{
+		nAutoIncrement = 0;
+	}
+	$( "body" ).data( "delib_get_top_zindex_auto_increment", nAutoIncrement );
+
+	//	...
 	$( sSelector ).each(function()
 	{
 		nZIndex = parseInt( parseFloat( $(this).css("z-index") ) );
@@ -599,6 +613,9 @@ function delib_get_top_zindex( sSelector, nMaxLimit )
 	{
 		nRet = Math.max( 1, Math.max.apply( Math, ArrZIndex ) );
 	}
+
+	//	...
+	nRet += nAutoIncrement;
 
 	return nRet;
 }
