@@ -579,13 +579,13 @@ function delib_get_top_zindex( sSelector, nMaxLimit )
 
 	//	...
 	nAutoIncrement	= parseInt( $( "body" ).data( "delib_get_top_zindex_auto_increment" ) );
-	if ( $lisn( nAutoIncrement ) && nAutoIncrement >= 0 )
+	if ( $lisn( nAutoIncrement ) && nAutoIncrement > 0 )
 	{
 		nAutoIncrement ++;
 	}
 	else
 	{
-		nAutoIncrement = 0;
+		nAutoIncrement = 1;
 	}
 	$( "body" ).data( "delib_get_top_zindex_auto_increment", nAutoIncrement );
 
