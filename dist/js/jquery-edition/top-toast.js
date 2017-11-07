@@ -6,24 +6,44 @@ function CTopToast( _oParent )
 	var m_oThis		= this;
 	var m_sBoardSelector	= "#top-toast";
 	var m_sTextSelector	= m_sBoardSelector + " .text";
-	var m_nAnimateDelay	= 200;
+	var m_nDuration		= 200;
+	var m_nDelay		= 3000;
 
 	//	properties
 	this.oParent		= _oParent;
 
 
-	this.showTopToast = function( sType, sMessage, nDelay )
+	this.setDuration = function( nDuration )
 	{
-		if ( nDelay > 100 && nDelay < 3000 )
+		if ( nDuration >= 200 && nDuration <= 1000 )
 		{
-			m_nAnimateDelay = nDelay;
+			m_nDuration = nDuration;
 		}
 
-		return _showTopToast( sType, sMessage );
+		return m_oThis;
+	};
+	this.setDelay = function( nDelay )
+	{
+		if ( nDelay > 1000 && nDelay < 10000 )
+		{
+			m_nDelay = nDelay;
+		}
+
+		return m_oThis;
+	};
+
+	this.showTopToast = function( sType, sMessage, nDelay )
+	{
+		m_oThis.setDelay( nDelay );
+		_showTopToast( sType, sMessage );
+
+		return m_oThis;
 	};
 	this.hideTopToast = function()
 	{
-		return _hideTopToast();
+		_hideTopToast();
+
+		return m_oThis;
 	};
 	this.isTopToastShown = function()
 	{
@@ -84,16 +104,14 @@ function CTopToast( _oParent )
 				.css( "left", "0px" )
 				.css( "top", ( -1 * nHeight ) + "px" )
 				.addClass( sAddedClass )
-				.animate( { top: 0 }, m_nAnimateDelay, function(){} )
-				.delay( 3000 )
+				.animate( { top: 0 }, m_nDuration, function(){} )
+				.delay( m_nDelay )
 				.queue( function()
 				{
 					_hideTopToast();
 					$( this ).dequeue();
 				});
 		}
-
-		return true;
 	}
 
 	function _hideTopToast()
@@ -109,7 +127,7 @@ function CTopToast( _oParent )
 			if ( nHeight > 0 )
 			{
 				$(m_sBoardSelector)
-					.animate( { top: ( -1 * nHeight ) }, m_nAnimateDelay, function()
+					.animate( { top: ( -1 * nHeight ) }, m_nDuration, function()
 					{
 						//	mark as hidden
 						//_setMessageBoardShown( false );
