@@ -18,7 +18,7 @@ function CLoading( _oParent )
 		var sClassName;
 
 		//	...
-		if ( 0 == $lslen( sTitle ) )
+		if ( 0 === $lslen( sTitle ) )
 		{
 			sTitle = "正在装载";
 		}
@@ -37,15 +37,20 @@ function CLoading( _oParent )
 		);
 
 		//	...
-		console.log( 'CLoadToast was shown' );
+		console.log( 'CLoading was shown' );
 	};
 
 	//	...
-	this.hide = function()
+	this.hide = function( pfnCallback )
 	{
 		m_oThis.cLoading.hide( function()
 		{
-			console.log( 'CLoadToast was hidden.' );
+			if ( $lisfun( pfnCallback ) )
+			{
+				pfnCallback();
+			}
+
+			console.log( 'CLoading was hidden.' );
 		});
 	};
 
